@@ -12,7 +12,7 @@ bin/
 obj/
 out/
 publish/
-wwwroot/Images/*
+wwwroot/Images/
 
 # Visual Studio Code
 .vscode/
