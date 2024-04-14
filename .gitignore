@@ -1,0 +1,48 @@
+# .NET Core
+*.lock.json
+*.log
+*.nuget.props
+*.nuget.targets
+*.userprefs
+*.vspscc
+*.vssscc
+project.fragment.lock.json
+project.lock.json
+bin/
+obj/
+out/
+publish/
+
+# Visual Studio Code
+.vscode/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.ide/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio 2015 cache/options directory
+.vs/
+# Uncomment if you have tasks that create the project's static files in wwwroot
+#wwwroot/
+
+# Others
+*.swp
+*.swo
+*.swn
+*.bak

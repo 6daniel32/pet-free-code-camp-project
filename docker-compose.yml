@@ -1,0 +1,35 @@
+version: '3'
+services:
+  free-code-camp-mssql:
+    container_name: free-code-camp-mssql
+    build:
+      context: docker/sqlsrv
+      dockerfile: Dockerfile
+      args:
+        WWWGROUP: '1000'
+    ports:
+      - '1433:1433'
+    environment:
+      SA_PASSWORD: 'Password23!'
+      DB_DATABASE: 'free-code-camp-mssql'
+      ACCEPT_EULA: 'Y'
+    volumes:
+      - '/var/opt/mssql'
+    networks:
+      - sail
+  sqlcmd:
+    image: mcr.microsoft.com/mssql-tools:latest
+    stdin_open: true
+    environment:
+      SA_PASSWORD: 'Password23!'
+      DB_DATABASE: 'free-code-camp-mssql'
+      ACCEPT_EULA: 'Y'
+      MSSQL_BACKUP: '/opt/mssql/setup.sql'
+    volumes:
+      - ./docker/sqlsrv/setup.sql:/opt/mssql/setup.sql
+    command: /bin/bash -c 'sleep 180; /opt/mssql-tools/bin/sqlcmd -S free-code-camp-mssql -U sa -P $$SA_PASSWORD -d master -i $$MSSQL_BACKUP;'
+    networks:
+      - sail
+networks:
+  sail:
+    driver: bridge
